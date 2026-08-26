@@ -52,5 +52,18 @@ namespace Jain
 
             thisRigi.position = new Vector3(poslnScreen.x, 0, poslnScreen.z);
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Bullet"))
+            {
+                return;
+            }
+            if (other.CompareTag("Enemy"))
+            {
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+            }
+        }
     }
 }
