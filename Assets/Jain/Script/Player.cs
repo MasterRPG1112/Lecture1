@@ -55,10 +55,6 @@ namespace Jain
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Bullet"))
-            {
-                return;
-            }
             if (other.CompareTag("Enemy"))
             {
                 Destroy(other.gameObject);

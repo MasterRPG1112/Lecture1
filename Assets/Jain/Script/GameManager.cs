@@ -42,7 +42,7 @@ namespace Jain
                     GameObject enemy = Enemys[Random.Range(0, Enemys.Length)];
                     Vector3 spawnPosition = new Vector3(Random.Range(-spawnValue.x, spawnValue.x), spawnValue.y, spawnValue.z);
                     Quaternion spawnRotation = Quaternion.identity;
-                    listEnemys.Add(Instantiate(enemy, spawnPosition, spawnRotation));
+                    listEnemys.Add(Instantiate(enemy, spawnPosition, enemy.transform.rotation));
                     yield return new WaitForSeconds(spawnWait);
                 }
             }

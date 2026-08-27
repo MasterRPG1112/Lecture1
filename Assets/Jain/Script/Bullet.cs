@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Jain
 {
@@ -7,6 +8,8 @@ namespace Jain
         [UnityEngine.SerializeField]
         private Vector3 destination;
         public float speed = 1.0f;
+        public bool isPlayer = true;
+
         public Vector3 dir;
 
         void Start()
@@ -24,6 +27,26 @@ namespace Jain
         {
             destination = _destination;
             dir = destination - this.transform.position;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (isPlayer)
+            {
+                if (other.CompareTag("Enemy"))
+                {
+                    Destroy(other.gameObject);
+                    Destroy(gameObject);
+                }
+            }
+            else
+            {
+                if (other.CompareTag("Player"))
+                {
+                    Destroy(other.gameObject);
+                    Destroy(gameObject);
+                }
+            }
         }
     }
 }

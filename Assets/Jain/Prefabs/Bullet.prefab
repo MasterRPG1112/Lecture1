@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1593143288026447590}
+  - component: {fileID: 4026234031325256169}
   - component: {fileID: 5401179516550520446}
   - component: {fileID: 2095624560836202533}
-  - component: {fileID: 4026234031325256169}
   - component: {fileID: 4008600242597146247}
   m_Layer: 0
   m_Name: Bullet
@@ -35,6 +35,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4026234031325256169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6176131970049755454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02300c97f015de844951415e810d2c6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Jain::Jain.Bullet
+  destination: {x: 0, y: 0, z: 0}
+  speed: 1
+  dir: {x: 0, y: 0, z: 0}
 --- !u!33 &5401179516550520446
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -92,21 +107,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4026234031325256169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6176131970049755454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02300c97f015de844951415e810d2c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Jain::Jain.Bullet
-  destination: {x: 0, y: 0, z: 0}
-  speed: 1
-  dir: {x: 0, y: 0, z: 0}
 --- !u!135 &4008600242597146247
 SphereCollider:
   m_ObjectHideFlags: 0

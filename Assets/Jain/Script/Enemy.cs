@@ -16,6 +16,13 @@ namespace Jain
 
         void Start()
         {
+            Player = GameObject.FindGameObjectWithTag("Player");
+
+            if (Player == null)
+            {
+                Debug.Log("Player Not Found.");
+            }
+
             this.GetComponent<Rigidbody>().linearVelocity = transform.forward * speed;
             InvokeRepeating("fireBullet", delay, fireRate);
         }
@@ -30,7 +37,9 @@ namespace Jain
             if (Player != null)
             {
                 GameObject bullet = Instantiate(objBullet, BulletPoint.transform.position, this.transform.rotation);
-                bullet.GetComponent<Bullet>().SetBullet(Player.transform.position);
+                Bullet bulletScript = bullet.GetComponent<Bullet>();
+                bulletScript.isPlayer = false;
+                bulletScript.SetBullet(Player.transform.position);
             }
         }
     }
