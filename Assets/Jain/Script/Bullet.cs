@@ -10,6 +10,8 @@ namespace Jain
         public float speed = 1.0f;
         public bool isPlayer = true;
 
+        public GameObject Item;
+
         public Vector3 dir;
 
         void Start()
@@ -35,6 +37,8 @@ namespace Jain
             {
                 if (other.CompareTag("Enemy"))
                 {
+                    Instantiate(Item, this.transform.position, Item.transform.rotation);
+
                     Destroy(other.gameObject);
                     Destroy(gameObject);
                 }
