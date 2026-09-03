@@ -14,7 +14,7 @@ namespace Jain
 
         void Start()
         {
-            
+            SetData();
         }
 
         void Update()
@@ -55,25 +55,51 @@ namespace Jain
 
         public void BtnMusic()
         {
-            if (SettingMusic.GetComponent<Text>().text == "¹è°æÀ½¾Ç")
+            if (SettingMusic.GetComponent<Text>().text == "Music on")
             {
-                SettingMusic.GetComponent<Text>().text = "¹è°æÀ½¾Ç ²û";
+                SettingMusic.GetComponent<Text>().text = "Music off";
+                GameDataManager.instance.isMusic = 0;
             }
             else
             {
-                SettingMusic.GetComponent<Text>().text = "¹è°æÀ½¾Ç";
+                SettingMusic.GetComponent<Text>().text = "Music on";
+                GameDataManager.instance.isMusic = 1;
             }
+            GameDataManager.instance.SaveData();
         }
 
         public void BtnSound()
         {
-            if (SettingSound.GetComponent<Text>().text == "È¿°úÀ½")
+            if (SettingSound.GetComponent<Text>().text == "Sound on")
             {
-                SettingSound.GetComponent<Text>().text = "È¿°úÀ½ ²û";
+                SettingSound.GetComponent<Text>().text = "Sound off";
+                GameDataManager.instance.isSound = 0;
             }
             else
             {
-                SettingSound.GetComponent<Text>().text = "È¿°úÀ½";
+                SettingSound.GetComponent<Text>().text = "Sound on";
+                GameDataManager.instance.isSound = 1;
+            }
+            GameDataManager.instance.SaveData();
+        }
+
+        public void SetData()
+        {
+            if (GameDataManager.instance.isMusic == 1)
+            {
+                SettingMusic.GetComponent<Text>().text = "Music on";
+            }
+            else if (GameDataManager.instance.isMusic == 0)
+            {
+                SettingMusic.GetComponent<Text>().text = "Music off";
+            }
+            if (GameDataManager.instance.isSound == 1)
+            {
+                SettingSound.GetComponent<Text>().text = "Sound on";
+            }
+            else if (GameDataManager.instance.isSound == 0)
+            {
+                SettingSound.GetComponent<Text>().text = "Sound off";
             }
         }
     }
