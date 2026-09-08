@@ -1,7 +1,10 @@
+using Codice.Client.Common;
 using NUnit.Framework;
+using PlasticGui.WorkspaceWindow.Attributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Jain
 {
@@ -13,6 +16,10 @@ namespace Jain
 
         public float spawnWait;
         public float startWait;
+
+        public Text HP;
+        public Text Upgrade;
+        public Text Bomb;
 
         public List<GameObject> listEnemys = new List<GameObject>();
 
@@ -30,6 +37,15 @@ namespace Jain
         {
             gameStatus = GameStatus.play;
             StartCoroutine(SpawnEnemy());
+
+            Player player = GameObject.Find("Player").GetComponent<Player>();
+            player.Hp = GameDataManager.instance.maxHp;
+            player.Upgrade = GameDataManager.instance.upgrade;
+            player.Bomb = GameDataManager.instance.bomb;
+
+            HP.text = "HP: " + player.Hp;
+            Upgrade.text = "Upgrade: " + player.Upgrade;
+            Bomb.text = "Bomb: " + player.Bomb;
         }
         
         IEnumerator SpawnEnemy()

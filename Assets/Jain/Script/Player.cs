@@ -12,6 +12,10 @@ namespace Jain
         public GameObject objBullet;
         public Transform BulletPoint;
 
+        public float Hp;
+        public float Upgrade;
+        public float Bomb;
+
         void Start()
         {
             thisRigi = this.GetComponent<Rigidbody>();

@@ -11,10 +11,18 @@ namespace Jain
         public int gameScore;
         public string curld;
 
+        //플레이어에 대한 정보
+        public float maxHp = 5f;
+        public int upgrade = 0;
+        public int maxUpgrade = 3;
+        public int bomb = 0;
+        public int maxBomb = 3;
+
         private void Awake()
         {
             instance = this;
             DontDestroyOnLoad(instance);
+            LoadDate();
         }
 
         public void LoadDate()
@@ -27,12 +35,24 @@ namespace Jain
             {
                 PlayerPrefs.SetInt("Sound", 1);
             }
+            if (!PlayerPrefs.HasKey("saveData"))
+            {
+                string saveData = curld + "," + gameScore;
+                PlayerPrefs.SetString("saveData", saveData);
+            }
+
+            string tempData = PlayerPrefs.GetString("saveData");
+            string[] data = tempData.Split(',');
+
+            curld = data[0];
+            gameScore = int.Parse(data[1]);
 
             isMusic = PlayerPrefs.GetInt("Music");
             isSound = PlayerPrefs.GetInt("Sound");
 
             Debug.Log(isMusic);
             Debug.Log(isSound);
+            Debug.Log(gameScore);
         }
 
         public void SaveData()
@@ -48,18 +68,22 @@ namespace Jain
                 //PlayerPrefs.DeleteAll();
                 //PlayerPrefs.DeleteKey("id");
             }
+
+            string saveData = curld + "," + gameScore;
+            PlayerPrefs.SetString("saveData", saveData);
+
             PlayerPrefs.SetInt("Music", isMusic);
             PlayerPrefs.SetInt("Sound", isSound);
         }
 
         void Start()
         {
-            LoadDate();
+            
         }
 
         void Update()
         {
-            
+
         }
     }
 }

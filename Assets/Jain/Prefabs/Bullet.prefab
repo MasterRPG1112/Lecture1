@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Jain::Jain.Bullet
   destination: {x: 0, y: 0, z: 0}
-  speed: 1
+  speed: 10
   isPlayer: 1
   Item: {fileID: 4552376351710008249, guid: 83988ab6ccb71e14d8b5855b976a04ea, type: 3}
   dir: {x: 0, y: 0, z: 0}

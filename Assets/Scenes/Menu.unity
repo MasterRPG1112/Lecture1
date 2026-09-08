@@ -1948,6 +1948,11 @@ MonoBehaviour:
   gameTime: 0
   gameScore: 0
   curld: 
+  maxHp: 5
+  upgrade: 0
+  maxUpgrade: 3
+  bomb: 0
+  maxBomb: 3
 --- !u!1 &2091117010
 GameObject:
   m_ObjectHideFlags: 0
