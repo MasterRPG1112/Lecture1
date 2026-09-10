@@ -20,6 +20,7 @@ namespace Jain
         public Text HP;
         public Text Upgrade;
         public Text Bomb;
+        public Text Score;
 
         public List<GameObject> listEnemys = new List<GameObject>();
 
@@ -42,10 +43,9 @@ namespace Jain
             player.Hp = GameDataManager.instance.maxHp;
             player.Upgrade = GameDataManager.instance.upgrade;
             player.Bomb = GameDataManager.instance.bomb;
+            player.Score = GameDataManager.instance.score;
 
-            HP.text = "HP: " + player.Hp;
-            Upgrade.text = "Upgrade: " + player.Upgrade;
-            Bomb.text = "Bomb: " + player.Bomb;
+            ReloadUI();
         }
         
         IEnumerator SpawnEnemy()
@@ -67,6 +67,16 @@ namespace Jain
         void Update()
         {
             
+        }
+
+        public void ReloadUI()
+        {
+            Player player = GameObject.Find("Player").GetComponent<Player>();
+
+            HP.text = "HP: " + player.Hp;
+            Upgrade.text = "Upgrade: " + player.Upgrade;
+            Bomb.text = "Bomb: " + player.Bomb;
+            Score.text = "Score: " + player.Score;
         }
     }
 }

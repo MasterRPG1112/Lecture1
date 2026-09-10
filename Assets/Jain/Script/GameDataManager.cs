@@ -12,11 +12,12 @@ namespace Jain
         public string curld;
 
         //플레이어에 대한 정보
-        public float maxHp = 5f;
+        public float maxHp = 10f;
         public int upgrade = 0;
         public int maxUpgrade = 3;
         public int bomb = 0;
         public int maxBomb = 3;
+        public float score = 0;
 
         private void Awake()
         {

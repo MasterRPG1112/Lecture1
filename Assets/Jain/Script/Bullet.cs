@@ -33,22 +33,34 @@ namespace Jain
 
         private void OnTriggerEnter(Collider other)
         {
+            Player player = GameObject.Find("Player").GetComponent<Player>();
+            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
             if (isPlayer)
             {
                 if (other.CompareTag("Enemy"))
                 {
                     Instantiate(Item, this.transform.position, Item.transform.rotation);
-
                     Destroy(other.gameObject);
                     Destroy(gameObject);
+                    player.Score += 10;
+                    gameManager.ReloadUI();
                 }
             }
             else
             {
                 if (other.CompareTag("Player"))
                 {
-                    Destroy(other.gameObject);
                     Destroy(gameObject);
+                    player.Hp -= 1;
+                    gameManager.ReloadUI();
+
+                    if (player.Hp < 1)
+                    {
+                        player.Hp = 0;
+                        Destroy(other.gameObject);
+                        gameManager.ReloadUI();
+                    }
                 }
             }
         }

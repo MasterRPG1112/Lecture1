@@ -15,6 +15,7 @@ namespace Jain
         public float Hp;
         public float Upgrade;
         public float Bomb;
+        public float Score;
 
         void Start()
         {
@@ -59,10 +60,23 @@ namespace Jain
 
         private void OnTriggerEnter(Collider other)
         {
+            Player player = GameObject.Find("Player").GetComponent<Player>();
+            GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
             if (other.CompareTag("Enemy"))
             {
                 Destroy(other.gameObject);
                 Destroy(gameObject);
+            }
+            else if (other.CompareTag("Item"))
+            {
+                if (player.Hp > 0)
+                {
+                    Destroy(other.gameObject);
+                    player.Hp += 5;
+                    player.Upgrade += 1;
+                    gameManager.ReloadUI();
+                }
             }
         }
     }
