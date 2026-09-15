@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 287147427}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,6 +238,11 @@ MonoBehaviour:
   Bomb: {fileID: 1594164314}
   Score: {fileID: 41587409}
   listEnemys: []
+  bossTime: 15
+  bossScript: {fileID: 0}
+  Boss: {fileID: 471418960237066577, guid: 005f25cbc7c161742855bab007ca00a8, type: 3}
+  isBoss: 0
+  gameTime: 0
   gameStatus: 0
 --- !u!4 &287147428
 Transform:

@@ -1,8 +1,6 @@
-using Codice.Client.Common;
-using NUnit.Framework;
-using PlasticGui.WorkspaceWindow.Attributes;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +21,12 @@ namespace Jain
         public Text Score;
 
         public List<GameObject> listEnemys = new List<GameObject>();
+
+        public float bossTime;
+        public Boss bossScript;
+        public GameObject Boss;
+        public bool isBoss = false;
+        public float gameTime;
 
         public enum GameStatus
         {
@@ -66,7 +70,22 @@ namespace Jain
 
         void Update()
         {
-            
+            if (!isBoss)
+            {
+                if (gameTime > bossTime)
+                {
+                    StopAllCoroutines();
+                    Invoke("BossInit", 2.0f);
+                    isBoss = true;
+                }
+            }
+            gameTime += Time.deltaTime;
+        }
+
+        void BossInit()
+        {
+            Vector3 bossSpawnPosition = new Vector3(0f, 8f, 0f);
+            Instantiate(Boss, bossSpawnPosition, Boss.transform.rotation);
         }
 
         public void ReloadUI()
