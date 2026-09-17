@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -13,10 +14,9 @@ namespace Jain
         public GameObject Item;
 
         public Vector3 dir;
-
         void Start()
         {
-        
+
         }
 
         void Update()
@@ -45,6 +45,21 @@ namespace Jain
                     Destroy(gameObject);
                     player.Score += 10;
                     gameManager.ReloadUI();
+                }
+                else if (other.CompareTag("Boss"))
+                {
+                    Boss boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>();
+                    Destroy(gameObject);
+                    boss.Hp -= 1;
+
+                    if (boss.Hp < 1)
+                    {
+                        player.Score += 300;
+                        boss.Hp = 0;
+                        Destroy(other.gameObject);
+                        ClearBGScript clearBGScript = new ClearBGScript();
+                        clearBGScript.OpenUI();
+                    }
                 }
             }
             else

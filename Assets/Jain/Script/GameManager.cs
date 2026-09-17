@@ -84,8 +84,7 @@ namespace Jain
 
         void BossInit()
         {
-            Vector3 bossSpawnPosition = new Vector3(0f, 8f, 0f);
-            Instantiate(Boss, bossSpawnPosition, Boss.transform.rotation);
+            Instantiate(Boss, Boss.transform.position, Boss.transform.rotation);
         }
 
         public void ReloadUI()

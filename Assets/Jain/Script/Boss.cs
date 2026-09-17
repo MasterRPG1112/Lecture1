@@ -12,7 +12,9 @@ namespace Jain
         public float bossMissileTime = 5;
         public float bossTempTime;
 
-        void Start()
+        public float Hp;
+
+        void Awake()
         {
             GameObject gameManagerObject = GameObject.FindGameObjectWithTag("GameManager");
             if (gameManagerObject != null)
